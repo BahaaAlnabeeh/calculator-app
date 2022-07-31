@@ -36,7 +36,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         history = num1.toString();
         history += buttonValue;
       });
-    } else if (buttonValue == '()') {
+    } else if (buttonValue == '( )') {
       setState(() {
         exp += '(';
       });
@@ -78,15 +78,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           break;
         case '%':
           {
-            exp = (num1 % num2).toString();
+            exp = (num2/100).toString();
           }
           break;
-        case '/':
+        case '÷':
           {
             num2 == 0
                 ? exp = 'Can’t divide by zero'
                 : exp = (num1 / num2).toString();
-            //exp = (num1 + num2).toString();
           }
           break;
       }
