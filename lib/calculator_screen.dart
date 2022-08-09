@@ -78,7 +78,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           break;
         case '%':
           {
-            exp = (num2/100).toString();
+            exp = (num2 / 100).toString();
           }
           break;
         case '÷':
@@ -128,27 +128,40 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-          backgroundColor: Colors.grey[850],
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: ListView.builder(
-                itemCount: his.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        his[index],
-                        style: const TextStyle(color: Colors.white),
+        backgroundColor: Colors.grey[850],
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: ListView.builder(
+              itemCount: his.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (index == 0)
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          'History',
+                          style: TextStyle(
+                            color: Color(0xFF9E9E9E),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                      if (index % 2 == 1) const Divider(
+                    Text(
+                      his[index],
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    if (index % 2 == 1)
+                      const Divider(
                         thickness: 0.9,
                         color: Color(0xFF616161),
                       ),
-                    ],
-                  );
-                }),
-          )),
+                  ],
+                );
+              }),
+        ),
+      ),
       backgroundColor: Colors.grey[850],
       appBar: AppBar(
         elevation: 0,
